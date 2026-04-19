@@ -1,0 +1,27 @@
+#include <stdio.h>
+int main()
+{
+    int n;
+    printf("Enter number of processes: ");
+    scanf("%d", &n);
+
+    int at[n], bt[n], tat[n], wt[n];
+    int done[n];
+
+    // Input
+    for(int i = 0; i < n; i++)
+    {
+        printf("Enter Arrival Time and Burst Time for P%d: ", i+1);
+        scanf("%d %d", &at[i], &bt[i]);
+        done[i] = 0;
+    }
+
+    int completed = 0;
+    int completionTime = 0;
+    float avgtat = 0, avgwt = 0;
+
+    // SJF Scheduling (Non-Preemptive)
+    while(completed < n)
+    {
+        int idx = -1;
+        int minBT = 9999;
